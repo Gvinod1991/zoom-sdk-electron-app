@@ -1,18 +1,12 @@
 import React, { useEffect, useCallback } from "react";
 import { ZoomMtg } from "@zoomus/websdk";
 import "./App.css";
-
-const signatureEndpoint = "https://node-zoom-sdk-sign-generator.herokuapp.com";
-const LEAVE_URL = "http://localhost:3000";
-const ZOOM_JWT_API_KEY = "nFu3f8RJQpqIIFGJvZ7_hw";
-//const meetingNumber = "75878772635";
-const role = 0;
-// const userName = "Vinod";
-// const userEmail = "vinod.godti@frostinteractive.com";
-// const passWord = "dA6G13";
-// const registrantToken = "";
-
 export default function App() {
+  const signatureEndpoint =
+    "https://node-zoom-sdk-sign-generator.herokuapp.com";
+  const LEAVE_URL = "http://localhost:3000";
+  const ZOOM_JWT_API_KEY = "nFu3f8RJQpqIIFGJvZ7_hw";
+  const role = 0;
   const query = new URLSearchParams(window.location.search);
   const userName = query.get("userName");
   const userEmail = query.get("userEmail");
@@ -85,10 +79,7 @@ export default function App() {
   }, [getSignature]);
   return (
     <main>
-      {/* For Component View */}
-      <div id="zoomAppRoot">
-        {/* Zoom Meeting SDK Component View Rendered Here */}
-      </div>
+      <div id="zoomAppRoot"></div>
     </main>
   );
 }
