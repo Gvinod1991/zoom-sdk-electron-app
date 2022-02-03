@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { ZoomMtg } from "@zoomus/websdk";
 import "./App.css";
 
-const signatureEndpoint = "http://node-zoom-sdk-sign-generator.herokuapp.com";
+const signatureEndpoint = "https://node-zoom-sdk-sign-generator.herokuapp.com";
 const LEAVE_URL = "http://localhost:3000";
 const ZOOM_JWT_API_KEY = "nFu3f8RJQpqIIFGJvZ7_hw";
 //const meetingNumber = "75878772635";
@@ -72,6 +72,8 @@ export default function App() {
         .catch((error) => {
           console.error(error);
         });
+    } else {
+      console.log("Meeting number requred");
     }
   }, [meetingNumber, startMeeting]);
   useEffect(() => {
