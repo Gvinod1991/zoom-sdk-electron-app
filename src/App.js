@@ -21,36 +21,39 @@ export default function App() {
   const showZoomDIv = () => {
     document.getElementById("zmmtg-root").style.display = "block";
   };
-  const startMeeting = (signature) => {
-    if (userName && userEmail && passWord && meetingNumber) {
-      ZoomMtg.init({
-        leaveUrl: LEAVE_URL,
-        isSupportAV: true,
-        disablePreview: true,
-        success: (success) => {
-          ZoomMtg.join({
-            signature: signature,
-            meetingNumber: meetingNumber,
-            userName: userName,
-            apiKey: ZOOM_JWT_API_KEY,
-            userEmail: userEmail,
-            passWord: passWord,
-            success: (success) => {
-              console.log(success);
-            },
-            error: (error) => {
-              console.log(error);
-            },
-          });
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
-    } else {
-      console.log("Pass necessary param");
-    }
-  };
+  const startMeeting = useCallback(
+    (signature) => {
+      if (userName && userEmail && passWord && meetingNumber) {
+        ZoomMtg.init({
+          leaveUrl: LEAVE_URL,
+          isSupportAV: true,
+          disablePreview: true,
+          success: (success) => {
+            ZoomMtg.join({
+              signature: signature,
+              meetingNumber: meetingNumber,
+              userName: userName,
+              apiKey: ZOOM_JWT_API_KEY,
+              userEmail: userEmail,
+              passWord: passWord,
+              success: (success) => {
+                console.log(success);
+              },
+              error: (error) => {
+                console.log(error);
+              },
+            });
+          },
+          error: (error) => {
+            console.log(error);
+          },
+        });
+      } else {
+        console.log("Pass necessary param");
+      }
+    },
+    [meetingNumber, userName, userEmail, passWord]
+  );
 
   const getSignature = useCallback(() => {
     if (meetingNumber) {
@@ -70,7 +73,7 @@ export default function App() {
           console.error(error);
         });
     }
-  }, []);
+  }, [meetingNumber, startMeeting]);
   useEffect(() => {
     showZoomDIv();
     ZoomMtg.setZoomJSLib("https://source.zoom.us/2.2.0/lib", "/av");
