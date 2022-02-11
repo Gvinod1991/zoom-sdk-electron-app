@@ -5,7 +5,7 @@ export default function Zoom() {
   const signatureEndpoint =
     "https://node-zoom-sdk-sign-generator.herokuapp.com";
   const LEAVE_URL = "/leave";
-  const ZOOM_JWT_API_KEY = "nFu3f8RJQpqIIFGJvZ7_hw";
+  const ZOOM_JWT_API_KEY = "wJqLH3I2S4yVgt5elm-zrg";
   const role = 0;
   const query = new URLSearchParams(window.location.search);
   const passWord = query.get("password");
@@ -31,7 +31,7 @@ export default function Zoom() {
               passWord: passWord,
               userName: userName,
               userEmail: userEmail,
-              tk: tk,
+              //tk: tk,
               success: (success) => {
                 console.log(success);
               },
