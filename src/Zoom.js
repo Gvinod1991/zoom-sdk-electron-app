@@ -42,7 +42,7 @@ export default function Zoom() {
                   content.firstElementChild.innerHTML
                 ).toLocaleString("en-US", options);
               }
-            }, 2000);
+            }, 2500);
             ZoomMtg.join({
               signature: signature,
               meetingNumber: meetingNumber,
